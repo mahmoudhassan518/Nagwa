@@ -1,0 +1,1 @@
+D:\2021\Nagwa\buildSrc\build\classes\kotlin\main\Libs$Test.class;D:\2021\Nagwa\buildSrc\build\classes\kotlin\main\Libs.class
