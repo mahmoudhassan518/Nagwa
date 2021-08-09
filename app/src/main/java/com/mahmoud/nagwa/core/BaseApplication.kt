@@ -27,9 +27,10 @@ class BaseApplication : Application() {
 
     @UiThread
     fun getApplicationComponent(): ApplicationComponent {
-            applicationComponent = DaggerApplicationComponent.builder()
-                .applicationContextModule(ApplicationContextModule(this.applicationContext)) //if delete will throw exception need to set bc its constructor have agreements
-                .build()
+        applicationComponent = DaggerApplicationComponent.builder()
+            .applicationContextModule(ApplicationContextModule(this.applicationContext)) //if delete will throw exception need to set bc its constructor have agreements
+
+            .build()
         return applicationComponent
     }
 }
