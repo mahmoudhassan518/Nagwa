@@ -4,6 +4,8 @@ object Libs {
     const val loader = "com.github.d-max:spots-dialog:1.1@aar"
 
     const val dagger2 = "com.google.dagger:dagger:_"
+    const val daggerAndroid = "com.google.dagger:dagger-android:_"
+    const val daggerSupport = "com.google.dagger:dagger-android-support:_"
     const val daggerCompiler = "com.google.dagger:dagger-compiler:_"
 
 

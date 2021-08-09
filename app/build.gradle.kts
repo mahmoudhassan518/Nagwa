@@ -74,7 +74,9 @@ dependencies {
 
     // --------------------- Dagger2 -------------------------
     implementation(Libs.dagger2)
-    kapt(Libs.daggerCompiler)
+    implementation(Libs.daggerAndroid)
+    implementation(Libs.daggerSupport)
+    kapt (Libs.daggerCompiler)
 
     //--------------------- RX -------------------------
     implementation(Libs.reactivexAndroid)
