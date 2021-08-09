@@ -46,6 +46,12 @@ abstract class BaseActivity<T : ViewDataBinding, VM : BaseViewModel>(
     abstract fun injectActivity(component: MainControllerComponent)
 
 
+    override fun onDestroy() {
+
+        viewModel.compositeDisposable.dispose()
+
+        super.onDestroy()
+    }
     abstract fun setup()
 
     private fun baseRender(state: ViewState) {

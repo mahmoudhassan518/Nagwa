@@ -1,18 +1,17 @@
 package com.mahmoud.nagwa.di.modules.application
 
 import android.content.Context
+import com.google.gson.Gson
 import com.mahmoud.nagwa.BuildConfig.DEBUG
+import com.mahmoud.nagwa.di.modules.application.ApplicationContextModule
 import com.mahmoud.nagwa.di.qualifiers.ApplicationContext
 import com.mahmoud.nagwa.di.scopes.ApplicationScope
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import timber.log.Timber
 import java.io.File
-import javax.inject.Singleton
 
 @Module(includes = [ApplicationContextModule::class])
 class NetworkModule {
@@ -52,4 +51,10 @@ class NetworkModule {
         }
     }
 
+
+    @ApplicationScope
+    @Provides
+    fun provideGson(): Gson {
+        return Gson()
+    }
 }

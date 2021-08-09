@@ -7,9 +7,12 @@ import io.reactivex.disposables.CompositeDisposable
 
 @Module
 class CompositeDisposableModule {
-    @Provides
+
     @ActivityScope
+    @Provides
     fun compositeDisposable(): CompositeDisposable {
         return CompositeDisposable()
     }
+
+
 }

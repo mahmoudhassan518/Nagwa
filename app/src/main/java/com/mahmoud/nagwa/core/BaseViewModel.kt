@@ -7,11 +7,20 @@ import io.reactivex.disposables.CompositeDisposable
 
 
 abstract class BaseViewModel(
-//    private val compositeDisposable: CompositeDisposable
+    val compositeDisposable: CompositeDisposable
 ) : ViewModel() {
 
     protected val internalState = MutableLiveData<ViewState>()
     val state: LiveData<ViewState> = internalState
 
+
+    fun onLoading() {
+        this.internalState.value = ViewState.Loading
+    }
+
+    fun onError(throwable: Throwable) {
+        this.internalState.value = ViewState.Error(throwable.message)
+
+    }
 
 }

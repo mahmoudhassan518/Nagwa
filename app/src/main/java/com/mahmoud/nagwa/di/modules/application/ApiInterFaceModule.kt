@@ -1,7 +1,12 @@
 package com.mahmoud.nagwa.di.modules.application
 
+import android.content.Context
+import com.google.gson.Gson
+import com.mahmoud.nagwa.data.datasources.locale.OfflineDataProvider
 import com.mahmoud.nagwa.data.datasources.remote.ApiService
 import com.mahmoud.nagwa.data.others.baseURL
+import com.mahmoud.nagwa.di.modules.application.NetworkModule
+import com.mahmoud.nagwa.di.qualifiers.ApplicationContext
 import com.mahmoud.nagwa.di.scopes.ApplicationScope
 import dagger.Module
 import dagger.Provides
@@ -9,6 +14,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 @Module(includes = [NetworkModule::class])
 class ApiInterFaceModule {
