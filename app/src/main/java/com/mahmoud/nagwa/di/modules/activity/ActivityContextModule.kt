@@ -11,7 +11,7 @@ class ActivityContextModule {
     private val activity: Activity?
     private val context: Context?
 
-    constructor(activity: Activity?) {
+    constructor(activity: Activity) {
         this.activity = activity
         context = activity
     }

@@ -13,6 +13,7 @@ class BaseApplication : Application() {
 
     private lateinit var applicationComponent: ApplicationComponent
 
+
     override fun onCreate() {
         super.onCreate()
 
@@ -28,8 +29,7 @@ class BaseApplication : Application() {
     @UiThread
     fun getApplicationComponent(): ApplicationComponent {
         applicationComponent = DaggerApplicationComponent.builder()
-            .applicationContextModule(ApplicationContextModule(this.applicationContext)) //if delete will throw exception need to set bc its constructor have agreements
-
+            .applicationContextModule(ApplicationContextModule(this.applicationContext))
             .build()
         return applicationComponent
     }

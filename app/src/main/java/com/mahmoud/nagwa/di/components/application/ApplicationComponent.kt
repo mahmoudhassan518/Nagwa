@@ -6,6 +6,7 @@ import com.mahmoud.nagwa.di.modules.application.ApiInterFaceModule
 import com.mahmoud.nagwa.di.modules.application.ApplicationContextModule
 import com.mahmoud.nagwa.di.modules.application.NetworkModule
 import com.mahmoud.nagwa.di.scopes.ApplicationScope
+import com.mahmoud.nagwa.presentation.ui.main.MainActivity
 import dagger.Component
 
 @ApplicationScope

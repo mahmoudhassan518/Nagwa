@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="buttonRadius">8dp</dimen>
+    <dimen name="buttonRadiusRound">20dp</dimen>
+
+
+    <dimen name="cardRadius">2dp</dimen>
+    <dimen name="cardElevation">4dp</dimen>
+
+
+    <dimen name="paddingGeneral">16dp</dimen>
+    <dimen name="paddingSmall">8dp</dimen>
+    <dimen name="paddingXSmall">4dp</dimen>
+    <dimen name="paddingLarge">24dp</dimen>
+
+
+    <dimen name="h1">24sp</dimen>
+    <dimen name="h2">20sp</dimen>
+    <dimen name="h3">16sp</dimen>
+    <dimen name="h4">14sp</dimen>
+    <dimen name="h5">10sp</dimen>
+    <dimen name="h6">6sp</dimen>
+
+    <dimen name="movieImageSize">200dp</dimen>
+
+
+</resources>
