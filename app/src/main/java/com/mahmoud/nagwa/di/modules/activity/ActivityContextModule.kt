@@ -9,8 +9,6 @@ import dagger.Provides
 class ActivityContextModule constructor(val context: Context) {
     @Provides
     @ActivityScope
-    fun provideContext(): Context {
-        return context.applicationContext;
-    }
-
+    fun provideContext(): Context =
+        context.applicationContext
 }

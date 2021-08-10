@@ -15,7 +15,6 @@ abstract class BaseActivity<T : ViewDataBinding, VM : BaseViewModel>(
     private val layoutId: Int
 ) : AppCompatActivity() {
 
-
     protected abstract val viewModel: VM
 
     //in case we needed to access the views
@@ -52,6 +51,7 @@ abstract class BaseActivity<T : ViewDataBinding, VM : BaseViewModel>(
 
         super.onDestroy()
     }
+
     abstract fun setup()
 
     private fun baseRender(state: ViewState) {

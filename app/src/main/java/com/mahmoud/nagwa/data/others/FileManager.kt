@@ -1,27 +1,21 @@
-package com.mahmoud.nagwa.data.datasources.locale
+package com.mahmoud.nagwa.data.others
 
 import android.os.Build
 import android.os.Environment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.androidnetworking.AndroidNetworking
-import com.androidnetworking.common.Priority
-import com.androidnetworking.error.ANError
-import com.androidnetworking.interfaces.DownloadListener
+import com.downloader.OnDownloadListener
+import com.downloader.PRDownloader
 import com.mahmoud.nagwa.domain.models.DownloadData
 import com.mahmoud.nagwa.domain.models.DownloadState
 import com.mahmoud.nagwa.domain.models.Movie
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import timber.log.Timber
 import java.io.File
 import java.io.IOException
 import java.nio.file.Files
 import java.nio.file.Paths
 import java.util.*
-import javax.inject.Inject
 
-class FileManager @Inject constructor() {
+class FileManager {
 
 
     private val _downloadStateFlow = MutableLiveData(
@@ -50,22 +44,24 @@ class FileManager @Inject constructor() {
 
     fun downloadFile(item: Movie): LiveData<DownloadData> {
         createFile()
-        AndroidNetworking.download(item.url, file.path, item.fileName)
-            .setTag("downloadTest")
-            .setPriority(Priority.MEDIUM)
+        PRDownloader.download(item.url, file.path, item.fileName)
             .build()
-            .setDownloadProgressListener { bytesDownloaded, totalBytes ->
-                _downloadStateFlow.value =
-                    getDownloadData(DownloadState.LOADING, totalBytes, bytesDownloaded)
+            .setOnStartOrResumeListener {
+                _downloadStateFlow.value = getDownloadData(DownloadState.LOADING, 0, 0)
             }
-            .startDownload(object : DownloadListener {
+            .setOnPauseListener { }
+            .setOnCancelListener { }
+            .setOnProgressListener {
+                _downloadStateFlow.value =
+                    getDownloadData(DownloadState.LOADING, it.totalBytes, it.currentBytes)
+
+            }
+            .start(object : OnDownloadListener {
                 override fun onDownloadComplete() {
-                    // do anything after completion
-                    Timber.d("onDownloadComplete")
                     _downloadStateFlow.value = getDownloadData(DownloadState.SUCCESS, 0, 0)
                 }
 
-                override fun onError(error: ANError?) {
+                override fun onError(error: com.downloader.Error?) {
                     _downloadStateFlow.value = getDownloadData(DownloadState.ERROR, 0, 0)
                 }
             })
@@ -96,21 +92,25 @@ class FileManager @Inject constructor() {
         }
     }
 
-    private fun getProgress(currentBytes: Long, totalBytes: Long): Int {
-        return ((getBytesToMBInt(currentBytes) / getBytesToMBInt(totalBytes)) * 100).toInt()
-    }
+    private fun getProgress(currentBytes: Long, totalBytes: Long): Int =
+        ((getBytesToMBInt(currentBytes) / getBytesToMBInt(totalBytes)) * 100).toInt()
 
-    private fun getProgressDisplayLine(currentBytes: Long, totalBytes: Long): String {
-        return getBytesToMBString(currentBytes).toString() + "/" + getBytesToMBString(totalBytes)
-    }
 
-    private fun getBytesToMBString(bytes: Long): String? {
-        return java.lang.String.format(Locale.ENGLISH, "%.2fMb", getBytesToMBInt(bytes))
-    }
+    private fun getProgressDisplayLine(currentBytes: Long, totalBytes: Long): String =
+        getBytesToMBString(currentBytes) + "/" + getBytesToMBString(totalBytes)
+
+
+    private fun getBytesToMBString(bytes: Long): String? =
+        if (getBytesToMBInt(bytes) <= 0) "UNKNOWN" else formatStringData(bytes)
+
+
+    private fun formatStringData(bytes: Long) = java.lang.String.format(
+        Locale.ENGLISH,
+        "%.2fMb",
+        getBytesToMBInt(bytes)
+    )
 
     private fun getBytesToMBInt(bytes: Long): Double {
         return bytes / (1024.00 * 1024.00)
     }
-
-
 }

@@ -10,9 +10,6 @@ class CompositeDisposableModule {
 
     @ActivityScope
     @Provides
-    fun compositeDisposable(): CompositeDisposable {
-        return CompositeDisposable()
-    }
-
-
+    fun compositeDisposable(): CompositeDisposable =
+        CompositeDisposable()
 }

@@ -8,8 +8,7 @@
                 android:centerColor="#995a5d5a"
                 android:centerY="0.75"
                 android:endColor="#ff747674"
-                android:angle="270"
-                />
+                android:angle="270" />
         </shape>
     </item>
 
@@ -22,18 +21,14 @@
                     android:centerColor="#80ffb600"
                     android:centerY="0.75"
                     android:endColor="#a0ffcb00"
-                    android:angle="270"
-                    />
+                    android:angle="270" />
             </shape>
         </clip>
     </item>
-    <item
-        android:id="@android:id/progress"
-        >
+    <item android:id="@android:id/progress">
         <clip>
             <shape>
-                <corners
-                    android:radius="5dip" />
+                <corners android:radius="5dip" />
                 <gradient
                     android:startColor="@color/design_default_color_primary"
                     android:endColor="@color/design_default_color_primary_dark"

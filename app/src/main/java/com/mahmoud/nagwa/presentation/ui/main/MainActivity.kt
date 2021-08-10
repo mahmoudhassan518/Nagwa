@@ -13,7 +13,6 @@ import com.mahmoud.nagwa.di.components.activity.MainControllerComponent
 import com.mahmoud.nagwa.domain.models.DownloadData
 import com.mahmoud.nagwa.domain.models.DownloadState
 import com.mahmoud.nagwa.domain.models.Movie
-import kotlinx.coroutines.flow.StateFlow
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -24,8 +23,8 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
     @Inject
     override lateinit var viewModel: MainViewModel
 
-    var isFileDownloading: Boolean = false
-    var movie: Movie? = null
+    private var isFileDownloading: Boolean = false
+    private var movie: Movie? = null
 
     private val askWriteStoragePermission =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { result ->

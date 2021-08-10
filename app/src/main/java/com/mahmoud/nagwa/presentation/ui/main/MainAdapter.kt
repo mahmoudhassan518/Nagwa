@@ -11,7 +11,7 @@ import com.mahmoud.nagwa.domain.models.Movie
 import javax.inject.Inject
 
 class MainAdapter @Inject constructor(
-    private val itemDownloadClicked: ((item : Movie) -> Unit)
+    private val itemDownloadClicked: ((item: Movie) -> Unit)
 ) :
     ListAdapter<Movie, MainAdapter.PersonHolder>(
         PopularPersonsDiffUtil

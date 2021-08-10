@@ -23,7 +23,6 @@ android {
     buildTypes {
 
 
-
         getByName("debug") {
             isDebuggable = true
         }
@@ -62,8 +61,6 @@ dependencies {
     implementation(Google.android.material)
 
     implementation(Libs.downloader)
-    implementation(Libs.loader)
-
     //-------------------------------------------- lifecycle -------------------------------
     implementation(AndroidX.Core.ktx)
     implementation(AndroidX.fragmentKtx)
@@ -76,7 +73,7 @@ dependencies {
     implementation(Libs.dagger2)
     implementation(Libs.daggerAndroid)
     implementation(Libs.daggerSupport)
-    kapt (Libs.daggerCompiler)
+    kapt(Libs.daggerCompiler)
 
     //--------------------- RX -------------------------
     implementation(Libs.reactivexAndroid)
@@ -102,26 +99,26 @@ dependencies {
 
 
 
-    testImplementation (Libs.Test.junit)
-    testImplementation (Libs.Test.xCore)
-    androidTestImplementation (Libs.Test.xCore)
+    testImplementation(Libs.Test.junit)
+    testImplementation(Libs.Test.xCore)
+    androidTestImplementation(Libs.Test.xCore)
 
-    androidTestImplementation (Libs.Test.arch)
-    androidTestImplementation (Libs.Test.rule)
-    androidTestImplementation (Libs.Test.runner)
-
-
-    testImplementation (Libs.Test.xArch)
-    androidTestImplementation (Libs.Test.xArch)
-    androidTestImplementation (Libs.Test.extJunit)
-
-    testImplementation (Libs.Test.mockito)
-    androidTestImplementation (Libs.Test.mockitoAndroid)
-
-    testImplementation (Libs.Test.mockk)
+    androidTestImplementation(Libs.Test.arch)
+    androidTestImplementation(Libs.Test.rule)
+    androidTestImplementation(Libs.Test.runner)
 
 
-    androidTestImplementation (Libs.Test.kaspresso)
-    androidTestImplementation (Libs.Test.kotlintest)
+    testImplementation(Libs.Test.xArch)
+    androidTestImplementation(Libs.Test.xArch)
+    androidTestImplementation(Libs.Test.extJunit)
+
+    testImplementation(Libs.Test.mockito)
+    androidTestImplementation(Libs.Test.mockitoAndroid)
+
+    testImplementation(Libs.Test.mockk)
+
+
+    androidTestImplementation(Libs.Test.kaspresso)
+    androidTestImplementation(Libs.Test.kotlintest)
 
 }

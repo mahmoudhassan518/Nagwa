@@ -2,7 +2,7 @@ package com.mahmoud.nagwa.core
 
 import android.app.Application
 import androidx.annotation.UiThread
-import com.androidnetworking.AndroidNetworking
+import com.downloader.PRDownloader
 import com.mahmoud.nagwa.BuildConfig.DEBUG
 import com.mahmoud.nagwa.di.components.application.ApplicationComponent
 import com.mahmoud.nagwa.di.components.application.DaggerApplicationComponent
@@ -17,7 +17,9 @@ class BaseApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        AndroidNetworking.initialize(applicationContext);
+//        AndroidNetworking.initialize(applicationContext)
+        PRDownloader.initialize(applicationContext)
+
         getApplicationComponent().injectApplication(this)
 
         if (DEBUG) {

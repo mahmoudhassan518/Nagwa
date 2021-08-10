@@ -1,7 +1,8 @@
 object Libs {
 
-    const val downloader = "com.amitshekhar.android:android-networking:1.0.2"
-    const val loader = "com.github.d-max:spots-dialog:1.1@aar"
+
+    //    const val downloader = "com.amitshekhar.android:android-networking:1.0.2"
+    const val downloader = "com.mindorks.android:prdownloader:0.6.0"
 
     const val dagger2 = "com.google.dagger:dagger:_"
     const val daggerAndroid = "com.google.dagger:dagger-android:_"
